@@ -1,9 +1,4 @@
-/*
-@license
-webix UI v.5.3.0
-This software is allowed to use under GPL or you need to obtain Commercial License
- to use it in non-GPL project. Please contact sales@webix.com for details
-*/
+
 .webix_view{font-family:'Arial',Arial;font-size:15px;color:#666;-webkit-font-smoothing:antialiased;cursor:default;overflow:hidden;border:0 solid #ddd;background-color:#fff;white-space:normal;-webkit-appearance:none}
 .webix_view.webix_form{background-color:#fff}
 body{-webkit-tap-highlight-color:transparent!important}
@@ -1100,10 +1095,7 @@ body.webix_print *{visibility:hidden}
 .webix_table_print.webix_view.webix_list-x{white-space:normal}
 .webix_table_print.webix_view.webix_list-x .webix_list_item{display:table-cell}
 }
-/*!
- *  Font Awesome 4.3.0 by @davegandy - http://fontawesome.io - @fontawesome
- *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
- */
+
 @font-face{font-family:FontAwesome;src:url(fonts/fontawesome-webfont.eot?v=4.7.0);src:url(fonts/fontawesome-webfont.eot?#iefix&v=4.7.0) format('embedded-opentype'),url(fonts/fontawesome-webfont.woff2?v=4.7.0) format('woff2'),url(fonts/fontawesome-webfont.woff?v=4.7.0) format('woff'),url(fonts/fontawesome-webfont.ttf?v=4.7.0) format('truetype'),url(fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular) format('svg');font-weight:400;font-style:normal}
 .fa{display:inline-block;font-family:FontAwesome;font-style:normal;font-weight:400;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;transform:translate(0,0)}
 .fa-lg{font-size:1.33333333em;line-height:.75em;vertical-align:-15%}
@@ -1790,8 +1782,8 @@ body.webix_print *{visibility:hidden}
 .fa-user-circle-o:before{content:"\f2be"}
 .fa-user-o:before{content:"\f2c0"}
 .fa-id-badge:before{content:"\f2c1"}
-.fa-drivers-license:before,.fa-id-card:before{content:"\f2c2"}
-.fa-drivers-license-o:before,.fa-id-card-o:before{content:"\f2c3"}
+/* .fa-drivers-license:before,.fa-id-card:before{content:"\f2c2"}
+.fa-drivers-license-o:before,.fa-id-card-o:before{content:"\f2c3"} */
 .fa-quora:before{content:"\f2c4"}
 .fa-free-code-camp:before{content:"\f2c5"}
 .fa-telegram:before{content:"\f2c6"}

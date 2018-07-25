@@ -1,9 +1,4 @@
-/*
-@license
-webix UI v.5.3.0
-This software is allowed to use under GPL or you need to obtain Commercial License
- to use it in non-GPL project. Please contact sales@webix.com for details
-*/
+
 window.webix||(webix={}),webix.version="5.3.0",webix.codebase="./",webix.name="core",webix.cdn="//cdn.webix.com",webix.clone=function(t){var e=webix.clone.a;return e.prototype=t,new e},webix.clone.a=function(){},webix.extend=function(t,e,i){if(t.$protoWait)return webix.PowerArray.insertAt.call(t.$protoWait,e,1),
 t;for(var s in e)s in t&&!i||(t[s]=e[s]);return e.defaults&&webix.extend(t.defaults,e.defaults),e.$init&&e.$init.call(t),t},webix.copy=function(t){var e;arguments.length>1?(e=arguments[0],t=arguments[1]):e=webix.isArray(t)?[]:{};for(var i in t){var s=t[i];!s||"object"!=typeof s||s instanceof RegExp?e[i]=s:webix.isDate(s)?e[i]=new Date(s):webix.env.esModern&&(s instanceof Map||s instanceof Set||s instanceof WeakMap||s instanceof WeakSet)?e[i]=s:(e[i]=webix.isArray(s)?[]:{},
 webix.copy(e[i],s))}return e},webix.single=function(t){var e=null,i=function(i){return e||(e=new t({})),e.c&&e.c.apply(e,arguments),e};return i},webix.protoUI=function(){var t=arguments,e=t[0].name,i=function(t){if(!i)return webix.ui[e].prototype;var s=i.$protoWait;if(s){for(var n=[s[0]],r=1;r<s.length;r++)n[r]=s[r],
