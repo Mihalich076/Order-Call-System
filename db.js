@@ -43,7 +43,7 @@ sequelize.sync({ force: true }).then(() => {
   });
 
   Setting.create({
-    name: "marque", value: "съешь еще этих мягких французских булок",
+    name: "marque", value: "",
   })
   Setting.create({
     name: "OrderSound", value: "100",
@@ -54,12 +54,22 @@ sequelize.sync({ force: true }).then(() => {
   Setting.create({
     name: "delete_order_timer", value: "10",
   })
-  // Gates.create({
-  //  id_:1, name: "W1",checked:true,
-  // })
-  // Gates.create({
-  //   id_:2, name: "W2",checked:true,
-  // })
+  Gates.create({
+   id_:1, name: "W1",checked:true,
+  })
+  Gates.create({
+    id_:2, name: "W2",checked:true,
+  })
+  Gates.create({
+    id_:3, name: "W3",checked:true,
+   })
+   Gates.create({
+     id_:4, name: "W4",checked:true,
+   })
+   Gates.create({
+    id_:5, name: "W5",checked:true,
+   })
+  
   // Playlist.create({
   //   src:'/images/download.jpg',timer:5, checked:true, sort:1
   // })
