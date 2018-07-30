@@ -82,10 +82,10 @@
     "successful_delete": "Delete successful.", 
     "successful_moved": "Move successful.",
     "successful_replace": "File replacement successful.", 
-    "successful_rename": "Upload succeseful.",
+    "successful_rename": "Added to playlist succesful.",
     "successful_edit": "Content update successful.",
     "support_fm": "Filemanager is a free software, please support !", 
-    "upload": "Upload", 
+    "upload": "OK", 
     "version": "version",
     "yes": "Yes"
 }

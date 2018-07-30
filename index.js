@@ -81,6 +81,8 @@ app.use(session({
 }));
 app.use(express.static('media'));
 app.use(express.static('public'));
+app.use(express.static('uploads/images'));
+app.use(express.static('uploads/videos'));
 var bars = exphbs({
     defaultLayout: 'main'
 });

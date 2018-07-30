@@ -102,7 +102,12 @@ proto.getinfo = function (file, cb) {
       if (stat.isFile()) {
         props['Size'] = stat.size;
         var icon = fm.fileIcons[fileType];
-        if (icon) result.preview = icon;
+        if (icon)
+        { if (baseName.substr(-3)=="jpg" || baseName.substr(-3)=="jpeg" || baseName.substr(-3)=="png" )
+           result.preview ="../"+baseName;
+           else  result.preview =icon;
+      
+        }
       }
 
       var dateFormat = fm.config.options.dateFormat;

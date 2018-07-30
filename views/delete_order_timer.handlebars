@@ -13,7 +13,9 @@ var marque = {
 	editable:true,
 	columns:[
 	{ id:"name", header:"Name" ,width:200},
-		{ id:"value", header:"Value(sec)", editor:"text",width:180},
+		{ id:"value", header:"Value(sec)", editor:"text",width:180,format:function(value){ 
+            return webix.i18n.numberFormat(value);
+        }},
 	
 	],
 	url:"/delete_order_timer/data",

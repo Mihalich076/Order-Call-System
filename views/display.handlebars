@@ -40,6 +40,21 @@ header {
 
 main {
   background-color:black;
+   height: auto;
+   overflow: hidden;
+}
+    
+.left {
+    width: 500px;
+    float: right;
+    background: #aafed6;
+}
+
+.right {
+    float: none; /* not needed, just for clarification */
+    /* the next props are meant to keep this block independent from the other floated one */
+    width: auto;
+    overflow: hidden;
 }
 
 footer {
@@ -70,12 +85,12 @@ background-color: black;
                                 </div>
                 </header>
                 <main>
-                                 <div id="output" style="float:left;" >
+                                 <div class="left" id="output" style="float:left;" >
                                         <audio controls id="audio1" style="display:none;">
                                                 <source src="beep.mp3" type="audio/mpeg">
                                         </audio>
                                 </div>
-                                <div id="content" style=" height:100%; align:center;">
+                                <div id="content" class="right" style=" height:100%; align:center;">
                                        
                                 </div>
                 </main>
@@ -111,7 +126,7 @@ var src=images[i].src;
 if (images[i].checked==true){
 if (src.substr(-3)=="mp4" ||src.substr(-3)=="avi"  )
 {
-document.getElementById("content").innerHTML="<video id='myvideo' width='70%' controls> <source src='"+images[i].src+"' type='video/mp4'></video>";
+document.getElementById("content").innerHTML="<video id='myvideo' width='100%' controls> <source src='"+images[i].src+"' type='video/mp4'></video>";
 webix.ajax().get("/sounds/player",function(text, data,){
         data = data.json();  
             console.log(parseInt(data.value)/100);
@@ -123,11 +138,11 @@ setTimeout(function(){var r=document.getElementById("myvideo").duration; interva
 //interval=setTimeout(tick,parseInt(vid.duration*1000));
 }
  else if(src.substr(-3)=="jpg" || src.substr(-3)=="png" ||src.substr(-3)=="jpeg"){
-document.getElementById("content").innerHTML="<img width='70%' src='"+src+"'>";
+document.getElementById("content").innerHTML="<img style='width:100%;' src='"+src+"'>";
 interval=setTimeout(tick,parseInt(images[i].timer)*1000);
 }
 else {
-        document.getElementById("content").innerHTML="<iframe  height='100%'  width='70%' src='"+src+"' style='border:none;'></iframe>";
+        document.getElementById("content").innerHTML="<iframe  height='100%'  width='100%' src='"+src+"' style='border:none;'></iframe>";
         interval=setTimeout(tick,parseInt(images[i].timer)*1000);
 }
 }

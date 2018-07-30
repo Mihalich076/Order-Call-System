@@ -255,7 +255,10 @@
    var a = webix.ajax().stringify($$("mylist").getSelectedItem());
     var b= JSON.parse(a);
      win=b.name;});
-      
+           $$("mylist").attachEvent("onItemDblClick", function(){
+$$('mylist').unselectAll();
+win=0;
+   });
         </script>
 
         <script src="js/send_orders.js"></script>

@@ -33,7 +33,7 @@ socket.on('chat', function (data) {
     document.getElementById("audio1").play();
    // document.getElementById("audio1").volume = 1;
     if (data.win !=0 && data.win!=null){
-    order = (data.win + "-" + data.message).toString();}
+    order = ( data.message +"-"+ data.win ).toString();}
     else {  order = (data.message).toString();}
     if(order!=""){
     $$("mylist").add({
@@ -58,7 +58,7 @@ socket2.on('chat', function (data) {
    document.getElementById("audio1").play();
     //document.getElementById("audio1").volume = 1;
     if (data.win !=0 && data.win!=null){
-        order = (data.win + "-" + data.message).toString();}
+        order = (data.message +"-"+ data.win).toString();}
         else {  order = (data.message).toString();}
     if(order!=""){
     $$("mylist").add({
