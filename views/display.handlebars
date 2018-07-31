@@ -126,7 +126,7 @@ var src=images[i].src;
 if (images[i].checked==true){
 if (src.substr(-3)=="mp4" ||src.substr(-3)=="avi"  )
 {
-document.getElementById("content").innerHTML="<video id='myvideo' width='100%' controls> <source src='"+images[i].src+"' type='video/mp4'></video>";
+document.getElementById("content").innerHTML="<video id='myvideo' width='100%' controls  > <source src='"+images[i].src+"' type='video/mp4'></video>";
 webix.ajax().get("/sounds/player",function(text, data,){
         data = data.json();  
             console.log(parseInt(data.value)/100);

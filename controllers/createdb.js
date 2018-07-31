@@ -9,7 +9,7 @@ module.exports = {
   });
 
   db.Setting.create({
-    name: "marque", value: "",
+    name: "marque", value: "Съешь же ещё этих мягких французских булок, да выпей чаю",
   })
   db.Setting.create({
     name: "OrderSound", value: "50",

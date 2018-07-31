@@ -1,4 +1,4 @@
-	<script src="./db.js"></script>
+	
 <h3>Hi!</h3>
 
 <p>Welcome to DashBoard.</p>
@@ -7,15 +7,31 @@
 <div id='create'></div>
 <script>
 
-    webix.ui({
+webix.ui({
   view:"button",
   container:'create',
   width:200,
-  id:"win3",
   label:'Generate DB',
   click:function(){
-      webix.ajax().post('/createdb/create');
+
+   webix.modalbox({
+    title:"Confirmation",
+    buttons:["Yes", "No"],
+    text:"Attention!! now all your setting will be removed(playlist, gates ...)<br> all your files will be saved. Are you shure you want to reset setting?",
+    width:500,
+    callback: function(result){
+        switch(result){
+        case "0": 
+             webix.ajax().post('/createdb/create');
+            break;
+        case "1":
+            //statement
+            break;
+        }
+    }
+});
   }
   
 })
+
 </script>
