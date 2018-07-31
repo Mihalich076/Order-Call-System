@@ -40,16 +40,25 @@ var toolbar = {
 		}},
 		{
      view:"button",
-    label:'Add to Play list',
+    label:'Add media to PlayList',
     click:function(){
-
-var left = (screen.width/2)-(700/2);
-var top = (screen.height/2)-(500/2);
-return window.open('/Filemanager/', 'title', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+700+', height='+500+', top='+top+', left='+left);
+		$$("win3").show();
+//var left = (screen.width/2)-(700/2);
+//var top = (screen.height/2)-(500/2);
+//return window.open('/Filemanager/', 'title', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+700+', height='+500+', top='+top+', left='+left);
                             }
         },
-		{ view:"button", value:"Add URL", width:120, click:function(){
-			$$("gates").add({})
+		{ view:"button", value:"Add URL to PlayLis", width:170, click:function(){
+
+			$$("gates").add({timer:10,checked:true,})
+			var currentID =$$('gates').getLastId();
+			var previousID=$$('gates').getPrevId(currentID,1);
+			var current=$$('gates').getItem(currentID);
+			var previous=$$('gates').getItem(previousID);
+			if (!previous){ current.sort=0}
+			else {current.sort=previous.sort+1}
+			$$("gates").refresh();
+		
 		}},
 		{ view:"button", value:"Delete Row", width:120, click:function(){
 			var rows = $$("gates").getSelectedId(true);
@@ -86,5 +95,42 @@ webix.ui({
 		toolbar, gates
 	]
 });
+
+webix.ui({
+  view:"window",
+  id:"win3",
+  height:760,
+  width:1000, 
+  left:450, top:50,
+  head:{
+    view:"toolbar", cols:[
+      { view:"button", label: 'Close Me', width: 100, align: 'right', click:function()
+	  {$$('win3').hide();
+	   $$('gates').load('/playlist/data');}}
+    ]
+  }
+  ,
+  body:{
+   
+    view:"iframe", src:"/filemanager/"
+   //template:"<iframe src='/filemanager/'></iframe>"
+
+  }
+})
+  $$("gates").attachEvent("onAfterLoad", function(){
+ var currentID =$$('gates').getLastId();
+	
+		var previousID=$$('gates').getPrevId(currentID,1);
+	
+		var current=$$('gates').getItem(currentID);
+		var previous=$$('gates').getItem(previousID);
+		if (!previous){ current.sort=0}else {current.sort=previous.sort+1};  
+		$$('gates').refresh();
+			var data = $$("gates").serialize();
+			for (i=0; i<data.length; i++){
+		   webix.ajax().put("/playlist/data" ,data[i]);
+		   }
+   });
+
 
 </script>

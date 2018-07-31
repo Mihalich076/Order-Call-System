@@ -60,7 +60,8 @@ module.exports = function (config, logger) {
     rename: function (req, res, next) {
       
       var file = req.query.old || req.body.old;
-      db.Playlist.create({src:file.toString(), timer:10, sort:sort});
+    
+      db.Playlist.create({src:file.toString(), timer:10, checked:true, sort:-1});
       sort=sort+1;
       var newName = req.query.new || req.body.new;
       fm.rename(file, newName, function (err, result) {

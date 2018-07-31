@@ -1,6 +1,21 @@
+	<script src="./db.js"></script>
 <h3>Hi!</h3>
 
 <p>Welcome to DashBoard.</p>
 
-
 <br><br><hr>
+<div id='create'></div>
+<script>
+
+    webix.ui({
+  view:"button",
+  container:'create',
+  width:200,
+  id:"win3",
+  label:'Generate DB',
+  click:function(){
+      webix.ajax().post('/createdb/create');
+  }
+  
+})
+</script>

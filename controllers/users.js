@@ -27,5 +27,6 @@ module.exports = {
 				user.update(req.body))
 			.then(() =>
 				res.json({}));
-	}
+	},
+	
 };

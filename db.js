@@ -34,41 +34,59 @@ var Setting = sequelize.define('setting', {
 
 
 });
+User.count({ where: {username: 'admin'} }).then(function(count){
+  if (count != 0) {
+    console.log('Author already exists')
+  //assuming you want it to keep looping, if not use callback(new Error("Author already exists"))
+  } else {
+    console.log('Creating author...')
+    User.create({
+      username: 'admin', password: 'admin'
+    })
+  }
+})
 
 
-sequelize.sync({ force: true }).then(() => {
 
-  User.create({
-    username: 'admin', password: 'admin'
-  });
+// if (!User.findOne({ where: { username: 'admin' }})){
+// User.create({
+//     username: 'admin', password: 'admin'
+//   });
+// }
 
-  Setting.create({
-    name: "marque", value: "",
-  })
-  Setting.create({
-    name: "OrderSound", value: "100",
-  })
-  Setting.create({
-    name: "PlayerSound", value: "100",
-  })
-  Setting.create({
-    name: "delete_order_timer", value: "10",
-  })
-  Gates.create({
-   id_:1, name: "W1",checked:true,
-  })
-  Gates.create({
-    id_:2, name: "W2",checked:true,
-  })
-  Gates.create({
-    id_:3, name: "W3",checked:true,
-   })
-   Gates.create({
-     id_:4, name: "W4",checked:true,
-   })
-   Gates.create({
-    id_:5, name: "W5",checked:true,
-   })
+// sequelize.sync({ }).then(() => {
+
+  // User.create({
+  //   username: 'admin', password: 'admin'
+  // });
+
+  // Setting.create({
+  //   name: "marque", value: "",
+  // })
+  // Setting.create({
+  //   name: "OrderSound", value: "50",
+  // })
+  // Setting.create({
+  //   name: "PlayerSound", value: "50",
+  // })
+  // Setting.create({
+  //   name: "delete_order_timer", value: "10",
+  // })
+  // Gates.create({
+  //  id_:1, name: "W1",checked:true,
+  // })
+  // Gates.create({
+  //   id_:2, name: "W2",checked:true,
+  // })
+  // Gates.create({
+  //   id_:3, name: "W3",checked:true,
+  //  })
+  //  Gates.create({
+  //    id_:4, name: "W4",checked:true,
+  //  })
+  //  Gates.create({
+  //   id_:5, name: "W5",checked:true,
+  //  })
   
   // Playlist.create({
   //   src:'/images/download.jpg',timer:5, checked:true, sort:1
@@ -98,8 +116,8 @@ sequelize.sync({ force: true }).then(() => {
   // Playlist.create({
   //   src:'https://laplacinte.md/',timer:5, checked:true, sort:9
   //  })
-});
+// });
 
 module.exports = {
-  User, Setting, Playlist, Gates
+  User, Setting, Playlist, Gates,sequelize
 };

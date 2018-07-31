@@ -13,9 +13,8 @@ var path = require('path');
 var filemanager = require('./files');
 var app = express();
 var helmet=require("helmet");
-var xFrameOptions = require('x-frame-options')
  require("dotenv/config");
-app.use(xFrameOptions())
+
 
 
 
@@ -23,6 +22,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));  
 app.use(express.static('uploads'));
+app.use(express.static('public/Filemanager'));
 
 
 // read Filemanager config
@@ -155,7 +155,9 @@ var sounds = require("./controllers/sounds");
 app.get('/sounds/order', sounds.getOrder);
 app.get('/sounds/player', sounds.getPlayer);
 app.put('/sounds/data/:userId', sounds.updateData);
+var createdb = require("./controllers/createdb");
 
+app.post('/createdb/create', createdb.create);
 var delete_order_timer = require("./controllers/delete_order_timer");
 app.get('/delete_order_timer/data', delete_order_timer.getData);
 app.put('/delete_order_timer/data/:userId', delete_order_timer.updateData);
