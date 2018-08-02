@@ -103,7 +103,7 @@ app.post('/login',(req, res) => {
 
         db.User.findOne({ where: { username: username ,password:password} }).then(function (user) {
             if (!user) {
-                res.redirect('/login');
+                res.redirect('/admin');
             } else {
                 req.session.user = user.dataValues;
                 res.redirect('/dashboard');
