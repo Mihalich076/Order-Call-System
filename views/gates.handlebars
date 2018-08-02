@@ -19,7 +19,7 @@ var toolbar = {
 			$$("gates").moveUp(item1.id,1);
 				var data = $$("gates").serialize();
 			for (i=0; i<data.length; i++){
-		   webix.ajax().put("/gates/data" ,data[i]);
+		   webix.ajax().put("/gates/data/"+data[i].id+"" ,data[i]);
 		   }
 		}},
 			{ view:"button", value:"Down", width:50, click:function(){
@@ -34,11 +34,25 @@ var toolbar = {
 			for (i=0; i<data.length; i++){
 		   webix.ajax().put("/gates/data/"+data[i].id+"" ,data[i]);
 		   }
-			
+		
 		}},
 		{ view:"button", value:"Add Row", width:120, click:function(){
-			$$("gates").add({name:"gates"
-			})
+			$$("gates").add({name:"gates",checked:true})
+			var currentID =$$('gates').getLastId();
+			var previousID=$$('gates').getPrevId(currentID,1);
+			var current=$$('gates').getItem(currentID);
+			var previous=$$('gates').getItem(previousID);
+			if (!previous){ current.id_=0}
+			else {current.id_=previous.id_+1}
+
+			if (!previous){ current.id=0}
+			else {current.id=previous.id+1}
+			var data = $$("gates").serialize();
+			for (i=0; i<data.length; i++){
+		   webix.ajax().put("/gates/data/"+data[i].id+"" ,data[i]);
+		   }
+		    $$('gates').load('/gates/data');
+			
 		}},
 		{ view:"button", value:"Delete Row", width:120, click:function(){
 			var rows = $$("gates").getSelectedId(true);
@@ -71,4 +85,18 @@ webix.ui({
 		toolbar, gates
 	]
 });
+ $$("gates").attachEvent("onAfterLoad", function(){
+ var currentID =$$('gates').getLastId();
+	
+		var previousID=$$('gates').getPrevId(currentID,1);
+	
+		var current=$$('gates').getItem(currentID);
+		var previous=$$('gates').getItem(previousID);
+		if (!previous){ current.id_=0}else {current.id_=previous.id_+1};  
+		$$('gates').refresh();
+			var data = $$("gates").serialize();
+			for (i=0; i<data.length; i++){
+		     webix.ajax().put("/gates/data/"+data[i].id+"" ,data[i]);
+		   }
+   });
 </script>

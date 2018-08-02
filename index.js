@@ -146,6 +146,8 @@ var gates = require("./controllers/gates");
 app.get('/gates/data', gates.getData);
 app.get('/gates/active_data', gates.getActive);
 app.post('/gates/data', gates.addData);
+// app.post('/gates/onedata', gates.addOneData);
+//app.put('/gates/data', gates.updateAll);
 app.put('/gates/data/:userId', gates.updateData);
 app.delete('/gates/data/:userId', gates.removeData);
 var marque = require("./controllers/marque");

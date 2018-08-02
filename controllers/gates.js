@@ -31,6 +31,10 @@ module.exports = {
 		db.Gates.create(req.body).then((obj) =>
 			res.json({ id: obj.id }));
 	},
+	// addOneData: function (req, res) {
+	// 	db.Gates.create(req.body.id_, req.body.name, req.body.description,req.body.checked).then((obj) =>
+	// 		res.json({ id: obj.id }));
+	// },
 	updateData: function (req, res) {
 		var { value, description } = req.body;
 		console.log(value)
@@ -39,5 +43,6 @@ module.exports = {
 				user.update(req.body))
 			.then(() =>
 				res.json({}));
-	}
+	},
+	
 };

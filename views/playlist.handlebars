@@ -51,13 +51,22 @@ var toolbar = {
 		{ view:"button", value:"Add URL to PlayLis", width:170, click:function(){
 
 			$$("gates").add({timer:10,checked:true,})
-			var currentID =$$('gates').getLastId();
+
+				var currentID =$$('gates').getLastId();
 			var previousID=$$('gates').getPrevId(currentID,1);
 			var current=$$('gates').getItem(currentID);
 			var previous=$$('gates').getItem(previousID);
 			if (!previous){ current.sort=0}
 			else {current.sort=previous.sort+1}
-			$$("gates").refresh();
+
+			if (!previous){ current.id=0}
+			else {current.id=previous.id+1}
+			var data = $$("gates").serialize();
+			for (i=0; i<data.length; i++){
+		   webix.ajax().put("/playlist/data/"+data[i].id+"" ,data[i]);
+		   }
+		    $$('gates').load('/playlists/data');
+
 		
 		}},
 		{ view:"button", value:"Delete Row", width:120, click:function(){
