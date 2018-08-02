@@ -114,6 +114,8 @@ webix.ajax("/playlist/data", function(text, data, XmlHttpRequest){
 setInterval(function(){
  webix.ajax("/playlist/data", function(text, data, XmlHttpRequest){
     images=JSON.parse(text);
+  $$("marqueess").load("/marque/data");
+    $$("order_timer").load("/delete_order_timer/data");
 });
 },10000)
 
