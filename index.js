@@ -39,7 +39,7 @@ config.connector = {
   serverRoot: './public',
 
   // path to Filemanager sources under server root
-  fmSrcPath: '/filemanager',
+  fmSrcPath: '/Filemanager',
 
   // uploader should be a preconfigured instance of multer
   uploader: multer({ dest: 'uploads' })
