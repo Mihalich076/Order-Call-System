@@ -14,7 +14,7 @@ module.exports = {
 				checked:1,
 			},
 			order:[
-			['id_', 'DESC'],
+			['id_', 'ASC'],
 		]
 		}).then(data => res.json(data));
 	},
