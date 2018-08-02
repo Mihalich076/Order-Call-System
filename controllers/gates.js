@@ -4,7 +4,7 @@ module.exports = {
 	getData: function (req, res) {
 		db.Gates.findAll({
 			order:[
-				['id_', 'DESC'],
+				['id_', 'ASC'],
 			]
 		}).then(data => res.json(data));
 	},

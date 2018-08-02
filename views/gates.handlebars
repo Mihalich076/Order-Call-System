@@ -8,6 +8,34 @@ webix.i18n.setLocale();
 var toolbar = {
 	view:"toolbar",
 	cols:[
+	{ view:"button", value:"UP", width:50, click:function(){
+			var item1= $$("gates").getSelectedItem();
+			var id_item2=$$("gates").getPrevId(item1.id,1);
+			var item2=$$("gates").getItem(id_item2);
+			var aux=item1.id_;
+			item1.id_=item2.id_;
+			item2.id_=aux;
+
+			$$("gates").moveUp(item1.id,1);
+				var data = $$("gates").serialize();
+			for (i=0; i<data.length; i++){
+		   webix.ajax().put("/gates/data" ,data[i]);
+		   }
+		}},
+			{ view:"button", value:"Down", width:50, click:function(){
+		var item1= $$("gates").getSelectedItem();
+			var id_item2=$$("gates").getNextId(item1.id,1);
+			var item2=$$("gates").getItem(id_item2);
+			var aux=item1.id_;
+			item1.id_=item2.id_;
+			item2.id_=aux;
+			$$("gates").moveDown(item1.id,1);
+				var data = $$("gates").serialize();
+			for (i=0; i<data.length; i++){
+		   webix.ajax().put("/gates/data/"+data[i].id+"" ,data[i]);
+		   }
+			
+		}},
 		{ view:"button", value:"Add Row", width:120, click:function(){
 			$$("gates").add({name:"gates"
 			})
@@ -26,7 +54,7 @@ var gates = {
 	autoheight:true, scroll:false,
 	editable:true,
 	columns:[
-	{ id:"id_", header:"ID" ,editor:"text"},
+	{ id:"id_", header:"ID" ,},
 	{ id:"name", header:"Name" ,editor:"text"},
 		{ id:"description", header:"description", editor:"text",width:275},
 		{id:"checked", header:"Active", template:"{common.checkbox()}"},
