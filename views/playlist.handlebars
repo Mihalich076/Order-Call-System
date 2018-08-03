@@ -11,6 +11,7 @@ var toolbar = {
 	view:"toolbar",
 	cols:[
 		{ view:"button", value:"UP", width:50, click:function(){
+				$$('gates').refresh();
 			var item1= $$("gates").getSelectedItem();
 			var id_item2=$$("gates").getPrevId(item1.id,1);
 			var item2=$$("gates").getItem(id_item2);
@@ -25,6 +26,7 @@ var toolbar = {
 		   }
 		}},
 			{ view:"button", value:"Down", width:50, click:function(){
+					$$('gates').refresh();
 		var item1= $$("gates").getSelectedItem();
 			var id_item2=$$("gates").getNextId(item1.id,1);
 			var item2=$$("gates").getItem(id_item2);
@@ -56,10 +58,10 @@ var toolbar = {
 			var previousID=$$('gates').getPrevId(currentID,1);
 			var current=$$('gates').getItem(currentID);
 			var previous=$$('gates').getItem(previousID);
-			if (!previous){ current.sort=0}
+			if (!previous){ current.sort=1}
 			else {current.sort=previous.sort+1}
 
-			if (!previous){ current.id=0}
+			if (!previous){ current.id=1}
 			else {current.id=previous.id+1}
 			var data = $$("gates").serialize();
 			for (i=0; i<data.length; i++){
@@ -129,19 +131,17 @@ webix.ui({
   }
 })
   $$("gates").attachEvent("onAfterLoad", function(){
- var currentID =$$('gates').getLastId();
-	
-		var previousID=$$('gates').getPrevId(currentID,1);
-	
-		var current=$$('gates').getItem(currentID);
-		var previous=$$('gates').getItem(previousID);
-		if (!previous){ current.sort=0}else {current.sort=previous.sort+1};  
-		$$('gates').refresh();
+
+
+		var sort=1;
 			var data = $$("gates").serialize();
 			for (i=0; i<data.length; i++){
+				data[i].sort=sort;
+				sort=sort+1;
 		   webix.ajax().put("/playlist/data" ,data[i]);
 		   }
+		   		$$('gates').refresh();
+	
    });
-
 
 </script>
