@@ -10,11 +10,13 @@
 	</head>
 	<body>
 		<h1 class='header'>
-			<a href="/dashboard">
+			<a href="/admin" style="float:left;">
 				<div></div>
 				DashBoard
 
 			</a>
+			<div id='logout' align='right'></div>
+		
 		</h1>
 		<div class='mainarea'>
 			<ul class='left'>
@@ -28,5 +30,17 @@
 			</ul>
 			<content class="right">{{{body}}}</content>
 		</div>
+		<script>
+			  webix.ui({
+         	view:'button',
+				container:'logout',
+				label:'logout',
+				width:'150',
+				click:"location.href ='admin';"
+                });
+			webix.ui({
+			
+			})
+		</script>
 	</body>
 </html>
