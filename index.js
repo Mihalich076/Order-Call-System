@@ -97,24 +97,26 @@ app.use((req, res, next) => {
     }
     next();
 });
-app.post('/login',(req, res) => {
-        var username = req.body.username,
-            password = req.body.password;
 
-        db.User.findOne({ where: { username: username ,password:password} }).then(function (user) {
-            if (!user) {
-                res.redirect('/admin ');
-            } else {
-                req.session.user = user.dataValues;
-                res.redirect('/dashboard');
-            }
-        });
-    });
 var menu = require("./menu");
 app.get('/admin', (req, res) => res.render('admin',{ layout: false }));
 app.get('/keyboard', (req, res) => res.render('keyboard', { layout: false }));
 app.get('/display', (req, res) => res.render("display", { layout: false }));
-app.get('/dashboard', (req, res) => res.render('home', menu(req)));
+app.post('/dashboard', (req, res) =>{
+    var username = req.body.username,
+    password = req.body.password;
+
+db.User.findOne({ where: { username: username ,password:password} }).then(function (user) {
+    if (!user) {
+        res.redirect('/admin');
+    } else {
+        req.session.user = user.dataValues;
+       
+        res.render('home', menu(req));
+    }
+});
+
+});
 app.get('/users', (req, res) => res.render('users', menu(req)));
 app.get('/gates', (req, res) => res.render('gates', menu(req)));
 app.get('/marque', (req, res) => res.render('marque', menu(req)));
