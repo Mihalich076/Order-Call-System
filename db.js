@@ -41,7 +41,7 @@ User.count({ where: {username: 'admin'} }).then(function(count){
   } else {
     console.log('Creating author...')
     User.create({
-      username: 'admin', password: 'admin'
+      username: 'admin', password: 'ind123456'
     })
   }
 })

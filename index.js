@@ -114,6 +114,7 @@ db.User.findOne({ where: { username: username ,password:password} }).then(functi
         res.render('home', menu(req));
     }
 });
+
 });
 app.get('/users', (req, res) => res.render('users', menu(req)));
 app.get('/gates', (req, res) => res.render('gates', menu(req)));
